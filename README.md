@@ -4,6 +4,7 @@
 - To Run the project you have to install Go in your machine and then
     run the command 
 	```
+	go get .
 	go run .
 	``` 
 	inside the project folder
