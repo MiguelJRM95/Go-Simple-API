@@ -49,7 +49,7 @@ func GetAlbumByID(c *gin.Context){
 }
 
 func PostAlbum(c *gin.Context) {
-	var newAlbum NewAlbum
+	var newAlbum AlbumDTO
 	var savedAlbum Album
 	var err error
 	if err := c.BindJSON(&newAlbum); err != nil {
@@ -67,7 +67,7 @@ func PostAlbum(c *gin.Context) {
 }
 
 func UpdateAlbum(c *gin.Context) {
-	var newAlbum NewAlbum
+	var newAlbum AlbumDTO
 	var updatedAlbum Album
 	var err error
 

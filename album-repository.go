@@ -63,7 +63,7 @@ func GetById(id int64) (Album, error) {
     return album, nil
 }
 
-func Save(newAlbum NewAlbum) (Album, error) {
+func Save(newAlbum AlbumDTO) (Album, error) {
 	var alb Album = Album{}
 	var lastInsertId int64
 	err := db.QueryRow("INSERT INTO album (title, artist, price) VALUES ($1, $2, $3) RETURNING id;", newAlbum.Title, newAlbum.Artist, newAlbum.Price).Scan(&lastInsertId)
@@ -74,7 +74,7 @@ func Save(newAlbum NewAlbum) (Album, error) {
 	return savedAlbum, nil
 }
 
-func Update(id int64, newAlbum NewAlbum) (Album, error) {
+func Update(id int64, newAlbum AlbumDTO) (Album, error) {
 	var alb Album = Album{}
 
 	_, err := db.Exec("UPDATE album SET title = $1, artist = $2, price = $3 WHERE id = $4;", newAlbum.Title, newAlbum.Artist, newAlbum.Price, id)
