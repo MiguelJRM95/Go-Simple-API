@@ -12,7 +12,7 @@ import (
 var db *sql.DB
 
 func Conn() {
-	connStr := "postgresql://postgres:test@localhost:5433/recordings?sslmode=disable"
+	connStr := "postgresql://postgres:test@postgresdb:5432/recordings?sslmode=disable"
 	// Get a database handle.
     var err error
     db, err = sql.Open("postgres", connStr)

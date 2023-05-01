@@ -20,5 +20,5 @@ func main() {
 	router.PUT("/albums/:id", UpdateAlbum)
 	router.DELETE("/albums/:id", DeleteAlbum)
 
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }

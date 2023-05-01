@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+    go-web:
+      container_name: golang_container
+      build: 
+        context: .
+      ports:
+        - "3000:8080"
+      links:
+        - postgresdb
+      command: go run .
+    postgresdb:
+      image: postgres:latest
+      container_name: postgres_container
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=test
+        - POSTGRES_DB=recordings
+      ports:
+        - '5434:5432'
+      volumes:
+        - postgres-db:/var/lib/postgresql/data
+        - ./sql/migration.sql:/docker-entrypoint-initdb.d/migration.sql
+
+volumes:
+  postgres-db:
