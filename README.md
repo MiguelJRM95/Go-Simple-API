@@ -1,21 +1,18 @@
 # ALBUMS API
 
 - A basic crud API for music albums
-- To Run the project you have to install Go in your machine and then
+- To Run the project you have to install Docker in your machine and then
     run the command 
 	```
-	go get .
-	go run .
+	docker-compose up -d
 	``` 
 	inside the project folder
 
-RUN with postgreSQL database
+The API will run in the port 3000 with some default data
 
-
-CREATE TABLE public.album (
-	id serial4 NOT NULL,
-	title varchar(128) NOT NULL,
-	artist varchar(255) NOT NULL,
-	price numeric(5, 2) NOT NULL,
-	CONSTRAINT album_pkey PRIMARY KEY (id)
-);
+- In order to connect to the database you need to create a local.env file with:
+ > DB_HOST="DB_HOST" \
+ DB_USER="DB_USER" \
+ DB_PASSWORD="DB_PASSWORD" \
+ DB_PORT="DB_PORT" \
+ DB_NAME="DB_NAME"
