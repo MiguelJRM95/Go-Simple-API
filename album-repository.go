@@ -5,14 +5,16 @@ import (
 	"strconv"
 	"fmt"
 	"log"
-	
+
 	_ "github.com/lib/pq"
 )
 
 var db *sql.DB
 
 func Conn() {
-	connStr := "postgresql://postgres:test@postgresdb:5432/recordings?sslmode=disable"
+	connStr := "postgresql://" + conf.DataBaseConfig.User + ":" + conf.DataBaseConfig.Password + 
+        "@" + conf.DataBaseConfig.Host + ":" + conf.DataBaseConfig.Port + "/" + 
+        conf.DataBaseConfig.Name + "?sslmode=disable"
 	// Get a database handle.
     var err error
     db, err = sql.Open("postgres", connStr)
